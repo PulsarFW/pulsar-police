@@ -39,7 +39,7 @@ function EMSCallbacks()
 		local myChar = exports['pulsar-characters']:FetchCharacterSource(source)
 		local char = exports['pulsar-characters']:FetchCharacterSource(tonumber(data))
 		if char ~= nil then
-			if exports.ox_inventory:ItemsHas(myChar:GetData("SID"), 1, "traumakit", 1) then
+			if exports.ox_inventory:ItemsHas(myChar:GetData("SID"), "traumakit", 1) then
 				if exports['pulsar-jobs']:HasJob(source, "ems") then
 					exports['pulsar-core']:LoggerInfo(
 						"EMS",
@@ -74,7 +74,7 @@ function EMSCallbacks()
 	exports["pulsar-core"]:RegisterServerCallback("EMS:FieldTreatWounds", function(source, data, cb)
 		local myChar = exports['pulsar-characters']:FetchCharacterSource(source)
 		if exports['pulsar-jobs']:HasJob(source, "ems") then
-			if exports.ox_inventory:ItemsHas(myChar:GetData("SID"), 1, "traumakit", 1) then
+			if exports.ox_inventory:ItemsHas(myChar:GetData("SID"), "traumakit", 1) then
 				exports['pulsar-hud']:Notification("success", data, "Your Wounds Were Treated")
 				cb({ error = false })
 			else
